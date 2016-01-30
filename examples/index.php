@@ -24,7 +24,6 @@ if (isset($_GET['frete'])) {
         $frete = new Frete($servico, $cepOrigem, $cepDestino, $produtos);
 
         $freteTotal = $frete->calcular();
-        var_dump($freteTotal);
 
         $html = "<p class='container text-center alert alert-info'> Frete total = "
             ."<strong> R$ "
