@@ -1,0 +1,27 @@
+{
+    "name": "gigapix/freteCorreios",
+    "description": "Biblioteca para cálculo do valor real do frete pelos correios.",
+    "minimum-stability": "stable",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Gabriel Prates",
+            "email": "gabsprates@gmail.com",
+            "homepage": "http://gabsprates.com/site/",
+            "role": "Lead Developer"
+        },
+        {
+            "name": "Marcos SF Filho",
+            "email": "gabsprates@gmail.com",
+            "homepage": "http://marcossffilho.com",
+            "role": "Developer"
+        }
+    ],
+    "support": {
+        "source": "https://github.com/gigapix/freteCorreios",
+        "issues": "https://github.com/gigapix/freteCorreios/issues"
+    },
+    "require": {
+        "php": ">=5.2"
+    }
+}
