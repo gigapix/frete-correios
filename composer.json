@@ -23,5 +23,16 @@
     },
     "require": {
         "php": ">=5.2"
+    },
+    "autoload": {
+        "classmap": [
+            "src/Frete.php"
+        ]
+    },
+    "require-dev": {
+        "squizlabs/php_codesniffer": "*"
+    },
+    "scripts": {
+        "lint": "phpcs"
     }
 }
