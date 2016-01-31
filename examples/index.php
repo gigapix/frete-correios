@@ -19,17 +19,24 @@ if (isset($_GET['frete'])) {
     $cepDestino = $_POST['cep-destino'];
     $produtos   = $_POST['produto'];
 
-    require_once 'Frete.php';
+    require_once '../src/Frete.php';
+    try {
+        $frete = new Frete($servico, $cepOrigem, $cepDestino, $produtos);
 
-    $frete = new Frete($servico, $cepOrigem, $cepDestino, $produtos);
+        $freteTotal = $frete->calcular();
 
-    $freteTotal = $frete->calculaFrete();
-
-    $html = "<p class='container text-center alert alert-info'> Frete total = "
+        $html = "<p class='container text-center alert alert-info'> Frete total = "
             ."<strong> R$ "
-                . number_format($freteTotal, 2, ',', '')
+            . number_format($freteTotal, 2, ',', '')
             ."</strong> "
-        ."</p>";
+            ."</p>";
+    } catch (Exception $e) {
+        $html = "<p class='container text-center alert alert-danger'>"
+            ."<strong>"
+            . $e->getMessage()
+            ."</strong>"
+            ."</p>";
+    }
 
 
 }
@@ -43,7 +50,7 @@ if (isset($_GET['frete'])) {
         <?= $html; ?>
     </div>
 
-    <form action="./?frete" method="post">
+    <form action="../?frete" method="post">
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label>CEP Origem</label>
