@@ -343,8 +343,14 @@ class Frete
             return $url;
         }
 
-        // CHECK: para melhor suporte a erros, poderiamos fazer uma requisição com cURL ou similares (Requests)
-        $respostaWebservice = file_get_contents($url);
+        $cURL = curl_init();
+        curl_setopt_array($cURL, array(
+            CURLOPT_RETURNTRANSFER => 1,
+            CURLOPT_URL => $url
+        ));
+        $respostaWebservice = curl_exec($cURL);
+        curl_close($cURL);
+
         if ($respostaWebservice === false) {
             throw new RuntimeException(
                 'Não foi possível obter uma resposta do Webservice dos Correios',

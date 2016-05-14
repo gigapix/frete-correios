@@ -50,7 +50,7 @@ if (isset($_GET['frete'])) {
         <?= $html; ?>
     </div>
 
-    <form action="../?frete" method="post">
+    <form action="./?frete" method="post">
         <div class="row">
             <div class="col-sm-6 form-group">
                 <label>CEP Origem</label>
