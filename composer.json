@@ -1,5 +1,5 @@
 {
-    "name": "gigapix/freteCorreios",
+    "name": "gigapix/frete-correios",
     "description": "Biblioteca para cálculo do valor real do frete pelos correios.",
     "minimum-stability": "stable",
     "license": "MIT",
