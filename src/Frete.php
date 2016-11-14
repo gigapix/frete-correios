@@ -288,7 +288,7 @@ class Frete
 
         if (($medida > 66) or ($pesoTotal > 30)) {
             if ($pesoTotal > 30 && $medida < 67) {
-                $somaFrete = $this->trasnbordoDePeso($retornaUrl, $pesoTotal, $medida);
+                $somaFrete = $this->transbordoDePeso($retornaUrl, $pesoTotal, $medida);
             } elseif ($pesoTotal > 30  &&  $medida > 66) {
                 $somaFrete = $this->transbordoDePesoEMedida($retornaUrl, $pesoTotal, $medida);
             }
@@ -384,7 +384,7 @@ class Frete
     }
 
     // TODO: Formatar esta função
-    private function trasnbordoDePeso($retornaUrl, $Peso, $Medida)
+    private function transbordoDePeso($retornaUrl, $Peso, $Medida)
     {
         $consultas = array();
 
