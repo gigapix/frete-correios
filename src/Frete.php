@@ -291,8 +291,10 @@ class Frete
                 $somaFrete = $this->transbordoDePeso($retornaUrl, $pesoTotal, $medida);
             } elseif ($pesoTotal > 30  &&  $medida > 66) {
                 $somaFrete = $this->transbordoDePesoEMedida($retornaUrl, $pesoTotal, $medida);
+            } elseif ($pesoTotal <= 30 && $medida > 66) {
+                $somaFrete = $this->transbordoDeMedida($retornaUrl, $this->produtos);
             }
-            // FIXME: Se peso for menor que 30, e medida maior que 66, $somaFrete não é definida
+            
         } else {
             $somaFrete = $this->obterValorDoFrete($retornaUrl, $pesoTotal, $medida, $medida, $medida);
         }
@@ -427,5 +429,56 @@ class Frete
         } while ($peso > 30 || $medida > 66);
 
         return ($retornaUrl) ? $consultas : array_sum($consultas);
+    }
+
+
+    private function transbordoDeMedida($retornaUrl, $produtos)
+    {
+
+        $caixas[0]['medida'] = 0;
+        $caixas[0]['peso'] = 0;
+
+        $i = 0;
+        $sobra = 0;
+        $consultas = array();
+
+        foreach ($produtos as $produto) {
+
+            do {    
+
+                $volume = ($produto['largura'] * $produto['altura'] * $produto['comprimento']) * $produto['qtd'];
+                $_medida = ceil(pow($volume, (1/3)));
+
+                $medida = ($_medida < 16) ? 16 : $_medida;
+
+                if( $medida > 66 ) {
+                    $sobra++;
+                    $produto['qtd']--;
+                    continue;
+                }
+
+                $caixas[$i]['medida'] = $medida;
+                $caixas[$i]['peso'] = $produto['peso'] * $produto['qtd']; 
+
+                if( $sobra ) {
+                    $i++;
+                    $produto['qtd'] = $sobra;
+                    $sobra = 0;
+                } else $produto['qtd'] = 0;
+
+
+            } while( $produto['qtd'] !== 0 );
+
+
+        }
+
+
+        // Obter preços das caixas separadas.
+        foreach ($caixas as $caixa) {
+            array_push($consultas, $this->obterValorDoFrete($retornaUrl, $caixa['peso'], $caixa['medida'], $caixa['medida'], $caixa['medida']));
+        }
+
+        return ($retornaUrl) ? $consultas : array_sum($consultas);
+
     }
 }
