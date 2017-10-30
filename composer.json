@@ -27,7 +27,10 @@
     "autoload": {
         "classmap": [
             "src/Frete.php"
-        ]
+        ],
+        "psr-4": {
+            "Gigapix\\FreteCorreios\\": "src/"
+        }
     },
     "require-dev": {
         "squizlabs/php_codesniffer": "*"
