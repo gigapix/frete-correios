@@ -1,5 +1,5 @@
 <?php
-
+namespace Gigapix\FreteCorreios;
 /**
  * Cálculo de Frete
  *
