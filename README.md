@@ -73,4 +73,4 @@ Um objeto pesando 7,76 kg e medindo 45 cm de comprimento, 38 cm de largura e 40 
 -
 
 ### Postagem Agrupada
-Proceder a mesma regra para cálculo do peso cúbico, sendo que para postagem agrupada o preço do serviço terá como base o somátório dos maiores pesos verificados entre o peso bruto e o cúbico de cada objeto.
+Proceder a mesma regra para cálculo do peso cúbico, sendo que para postagem agrupada o preço do serviço terá como base o somatório dos maiores pesos verificados entre o peso bruto e o cúbico de cada objeto.
