@@ -123,29 +123,29 @@ class Frete
     ) {
         // Todos os parâmetros são validados no construtor.
         if (is_string($servico) === false) {
-            throw new InvalidArgumentException('A identificação do serviço dos Correios deve ser uma string.');
+            throw new \InvalidArgumentException('A identificação do serviço dos Correios deve ser uma string.');
         }
         if ($this->validaCEP($cepOrigem) === false) {
-            throw new InvalidArgumentException('O CEP de origem é inválido.');
+            throw new \InvalidArgumentException('O CEP de origem é inválido.');
         }
         if ($this->validaCEP($cepDestino) === false) {
-            throw new InvalidArgumentException('O CEP de destino é inválido.');
+            throw new \InvalidArgumentException('O CEP de destino é inválido.');
         }
         if ($this->validaProdutos($produtos) === false) {
-            throw new InvalidArgumentException('O array de produtos não possui o formato correto.');
+            throw new \InvalidArgumentException('O array de produtos não possui o formato correto.');
         }
         if (is_bool($maoPropria) === false) {
-            throw new InvalidArgumentException(
+            throw new \InvalidArgumentException(
                 'A identificação do uso do serviço adicional "mão própria" deve ser um valor booleano.'
             );
         }
         if (is_numeric($valorDeclarado) === false) {
-            throw new InvalidArgumentException(
+            throw new \InvalidArgumentException(
                 'A identificação do uso do serviço adicional "valor declarado" deve ser um valor booleano.'
             );
         }
         if (is_bool($avisoRecebimento) === false) {
-            throw new InvalidArgumentException(
+            throw new \InvalidArgumentException(
                 'A identificação do uso do serviço adicional "aviso de recebimento" deve ser um valor booleano.'
             );
         }
@@ -264,7 +264,7 @@ class Frete
     public function calcular($retornaUrl = false)
     {
         if (is_bool($retornaUrl) === false) {
-            throw new InvalidArgumentException(
+            throw new \InvalidArgumentException(
                 'A identificação do retorno da URL de consulta deve ser um valor booleano.'
             );
         }
@@ -360,7 +360,7 @@ class Frete
 
         $resposta = simplexml_load_string($respostaWebservice);
         if ($resposta === false) {
-            throw new RuntimeException(
+            throw new \RuntimeException(
                 'Não foi possível reconhecer o XML na resposta do Webservice dos Correios. '.
                 'Talvez algum parâmetro enviado esteja inválido.',
                 self::ERR_XML_INVALIDO
@@ -372,9 +372,9 @@ class Frete
             case 0:
                 return $this->formataValorEmReais((string) $dadosFrete->Valor);
             case 7:
-                throw new RuntimeException('Serviço temporariamente indisponível.', self::ERR_SERVIDO_INDISPONIVEL);
+                throw new \RuntimeException('Serviço temporariamente indisponível.', self::ERR_SERVIDO_INDISPONIVEL);
             default:
-                throw new RuntimeException(
+                throw new \RuntimeException(
                     ($dadosFrete->MsgErro && ((string) $dadosFrete->MsgErro))
                         ? $dadosFrete->MsgErro
                         : 'Não foi possível obter o valor do frete pelos Correios.',
