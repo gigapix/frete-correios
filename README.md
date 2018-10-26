@@ -21,7 +21,7 @@ Especificações|Mínimo|Máximo
 Comprimento (C)|16 cm|105 cm
 Largura (L)|11 cm|105 cm
 Altura (A)|2 cm|105 cm
-Soma (C+L+A)|29 cm|200
+Soma (C+L+A)|29 cm|200 cm
 > A soma resultante do comprimento + largura + altura não deve superar 200 cm.
 > A soma resultante do comprimento + o dobro do diâmetro não pode ser menor que 28 cm.
 
@@ -51,8 +51,6 @@ Soma (C + L)|27 cm|120 cm
 #### Peso bruto (balança)
 1. Pesar o objeto para obter o peso bruto (balança).
 
--
-
 ## Como é obtido o preço da postagem
 
 ### Postagem Individual
@@ -69,8 +67,6 @@ Um objeto pesando 7,76 kg e medindo 45 cm de comprimento, 38 cm de largura e 40 
     Peso real = 8 kg
 
 **3. Será cobrado o maior dos dois pesos, ou seja, 12kg**
-
--
 
 ### Postagem Agrupada
 Proceder a mesma regra para cálculo do peso cúbico, sendo que para postagem agrupada o preço do serviço terá como base o somátório dos maiores pesos verificados entre o peso bruto e o cúbico de cada objeto.
